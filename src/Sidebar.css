@@ -1,0 +1,74 @@
+.sidebar {
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: #fff;
+    padding-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  .sidebar-header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #555;
+  }
+  
+  .sidebar-header h3 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu-item:hover {
+    background-color: #555;
+  }
+  
+  .active {
+    background-color: #007bff;
+    font-weight: bold;
+  }
+  
+  /* Optional: Add styles to make it look like a navigation menu */
+  .sidebar-menu li {
+    border-bottom: 1px solid #555;
+  }
+  
+  .sidebar-menu li:last-child {
+    border-bottom: none;
+  }
+  
+  .sidebar-menu li:hover {
+    background-color: #555;
+  }
+  
+  .sidebar-menu li.active:hover {
+    background-color: #007bff;
+  }
+  
+  /* Optional: Add a logo or icon for the company */
+  .sidebar-header h3::before {
+    /* Add your logo or icon here */
+    content: '🏢';
+    display: block;
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  /* Optional: Change the font and add padding */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }

@@ -1,0 +1,52 @@
+/* CardSlider.css */
+
+.card-slider {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .card {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .slick-dots {
+    bottom: -40px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .slick-dots li {
+    margin: 0 5px;
+  }
+  
+  .slick-dots li button {
+    font-size: 12px;
+    color: #888;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .slick-dots li.slick-active button {
+    color: #007bff;
+  }
+  
+  /* Optional: Center align the cards on smaller screens */
+  @media (max-width: 768px) {
+    .card-slider {
+      width: 90%;
+    }
+  }
+ 
+  
+  
+  
+  

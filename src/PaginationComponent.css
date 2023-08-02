@@ -1,0 +1,66 @@
+.pagination-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for the pagination control */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .pagination li {
+    display: inline-block;
+    margin: 0 5px;
+  }
+  
+  .pagination a {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .pagination a:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .pagination .active a {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+  }
+
+  .icon-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .edit-button,
+  .delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .edit-button {
+    color: #007bff;
+  }
+  
+  .delete-button {
+    color: #dc3545;
+  }
+  
+  /* Hover styles for the buttons */
+  .edit-button:hover,
+  .delete-button:hover {
+    color: #0056b3; /* Darker shade for edit */
+    /* color: #c82333; // Darker shade for delete */
+  }
+  
