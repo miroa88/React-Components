@@ -4,17 +4,19 @@ import {
   format,
   addMonths,
   subMonths,
+  endOfMonth,
   startOfMonth,
   eachDayOfInterval,
   getYear,
   getMonth,
+  isSameDay 
 } from 'date-fns';
 
 import './DatePicker.css';
 
 const DatePicker = () => {
   const { Option } = Select;
-  const [selectedMonth, setSelectedMonth] = useState(new Date());
+  const [selectedMonth, setSelectedMonth] = useState(new Date()); 
 
   const months = Array.from({ length: 12 }, (_, monthIndex) => ({
     value: monthIndex,
@@ -22,7 +24,7 @@ const DatePicker = () => {
   }));
 
   const years = Array.from({ length: 10 }, (_, yearIndex) => {
-    const year = getYear(selectedMonth) - 5 + yearIndex;
+    const year = getYear(selectedMonth) - 1 + yearIndex;
     return { value: year, label: year.toString() };
   });
 
@@ -31,23 +33,50 @@ const DatePicker = () => {
     end: addMonths(selectedMonth, 1),
   });
 
-  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const getDaysInMonth = (selectedDate) => {
+    const startOfSelectedMonth = startOfMonth(selectedDate);
+    const endOfSelectedMonth = endOfMonth(selectedDate);
+    const daysInMonth = eachDayOfInterval({ start: startOfSelectedMonth, end: endOfSelectedMonth });
+    return [...daysInMonth]; 
+  }
 
-  const handleMonthChange = (event) => {
-    const newMonth = parseInt(event.target.value);
+  const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', ];
+
+  const handleMonthChange = (value) => {
+    console.log(selectedMonth.getDay())
+    const newMonth = parseInt(value);
     setSelectedMonth((prevMonth) => new Date(getYear(prevMonth), newMonth));
   };
 
-  const handleYearChange = (event) => {
-    const newYear = parseInt(event.target.value);
+  const handleYearChange = (value) => {
+    console.log(selectedMonth.getDay())
+    const newYear = parseInt(value);
     setSelectedMonth((prevMonth) => new Date(newYear, getMonth(prevMonth)));
+    handleStartOfMonth()
+
   };
+
+  const handleStartOfMonth = (selectedDate) => {
+    // const startOfSelectedMonth = startOfMonth(selectedDate);
+    const numberOfDaysFormLastMonth = selectedDate.getDay() - 1;
+    const daysInLastMonth = getDaysInMonth(subMonths(selectedDate, 1))
+    return daysInLastMonth.slice(-numberOfDaysFormLastMonth)
+  }
+
+  const handleDayChange = (clickedDay) => {
+    
+    const daysToAdd = clickedDay.target.textContent - selectedMonth.getDate();
+    let newDate = new Date(selectedMonth);
+    newDate.setDate(selectedMonth.getDate() + daysToAdd);
+    setSelectedMonth(newDate)
+  }
 
   return (
     <div className="date-picker">
+      <div>{String(selectedMonth)}</div>
       <div className="header">
         <Select
-          value={getMonth(selectedMonth)}
+          defaultValue={getMonth(selectedMonth)}
           onChange={handleMonthChange}
           className="month-dropdown"
         >
@@ -58,7 +87,7 @@ const DatePicker = () => {
           ))}
         </Select>
         <Select
-          value={getYear(selectedMonth)}
+          defaultValue={getYear(selectedMonth)}
           onChange={handleYearChange}
           className="year-dropdown"
         >
@@ -68,8 +97,7 @@ const DatePicker = () => {
             </Option>
           ))}
         </Select>
-
-
+      
       </div>
       <div className="days">
         {daysOfWeek.map((day) => (
@@ -77,8 +105,13 @@ const DatePicker = () => {
             {day}
           </div>
         ))}
-        {daysInMonth.map((day) => (
-          <div key={day} className="day">
+        {handleStartOfMonth(selectedMonth).map((day) => (
+          <div key={day} className= 'hide-day' >
+            {format(day, 'd')}
+          </div>
+        ))}
+        {getDaysInMonth(selectedMonth).map((day) => (
+          <div key={day} onClick={handleDayChange} className={`day ${isSameDay(selectedMonth, day) ? 'selected day' : 'day'}`} >
             {format(day, 'd')}
           </div>
         ))}

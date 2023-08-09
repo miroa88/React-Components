@@ -14,8 +14,6 @@
     padding: 10px; /* Add padding for better appearance */
   }
   
-
-  
   .days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -33,6 +31,20 @@
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+  }
+  .hide-day {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .day:hover {
+    background-color: lightgray; /* or any other color you prefer */
+    cursor: pointer;
+  }
+
+  .selected {
+    background-color: rgb(56, 190, 252);
   }
   
   button {
