@@ -6,6 +6,7 @@ import CardSlider from './CardSlider';
 import Table from './Table';
 import Layout from './Layout';
 import AutocompleteTextField from './AutocompleteTextField'; 
+import DatePicker from './DatePicker';
 
 function App() {
   const initialInputValue = 'Initial Value';
@@ -38,17 +39,20 @@ function App() {
   //     </Routes>
   //   </Layout>
   // </Router>
-  <div>
-  <h1>Autocomplete Text Field {selectedValue}</h1>
-  <AutocompleteTextField
-    initialValue={initialInputValue}
-    value={inputValue}
-    options={suggestionArray}
-    // setInputValueOnSelect={setSelectedValue}
-    setInputValueOnChange={setSelectedValue}
-    placeholder={"placeholder"}
-    style={{ width: 200 }}
-  />
+//   <div>
+//   <h1>Autocomplete Text Field {selectedValue}</h1>
+//   <AutocompleteTextField
+//     initialValue={initialInputValue}
+//     value={inputValue}
+//     options={suggestionArray}
+//     // setInputValueOnSelect={setSelectedValue}
+//     setInputValueOnChange={setSelectedValue}
+//     placeholder={"placeholder"}
+//     style={{ width: 200 }}
+//   />
+// </div>
+<div className="App">
+  <DatePicker />
 </div>
   );
 }
