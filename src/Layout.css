@@ -1,0 +1,39 @@
+.layout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Set the minimum height to fill the entire viewport */
+  }
+  
+  /* Define styles for the header, sidebar, and footer */
+  .header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .sidebar {
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  /* Define styles for the main content area */
+  .main-content {
+    flex: 1; /* This ensures the content area takes up remaining vertical space */
+    display: flex;
+  }
+  
+  .content {
+    flex: 1; /* This allows the content area to fill the remaining space */
+    padding: 20px;
+  }
+  
+  /* Optional: Adjust the content padding based on your design preferences */
+  /* .content {
+    padding: 20px 40px;
+  } */
