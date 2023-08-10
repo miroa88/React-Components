@@ -51,7 +51,7 @@ function App() {
 //     style={{ width: 200 }}
 //   />
 // </div>
-<div className="App">
+<div>
   <DatePicker />
 </div>
   );

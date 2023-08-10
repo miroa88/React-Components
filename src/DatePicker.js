@@ -43,24 +43,27 @@ const DatePicker = () => {
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', ];
 
   const handleMonthChange = (value) => {
-    console.log(selectedMonth.getDay())
     const newMonth = parseInt(value);
     setSelectedMonth((prevMonth) => new Date(getYear(prevMonth), newMonth));
   };
 
   const handleYearChange = (value) => {
-    console.log(selectedMonth.getDay())
     const newYear = parseInt(value);
     setSelectedMonth((prevMonth) => new Date(newYear, getMonth(prevMonth)));
-    handleStartOfMonth()
-
   };
 
   const handleStartOfMonth = (selectedDate) => {
-    // const startOfSelectedMonth = startOfMonth(selectedDate);
-    const numberOfDaysFormLastMonth = selectedDate.getDay() - 1;
+    const startOfSelectedMonth = startOfMonth(selectedDate);
+    let numberOfDaysFormLastMonth =  startOfSelectedMonth.getDay();
     const daysInLastMonth = getDaysInMonth(subMonths(selectedDate, 1))
-    return daysInLastMonth.slice(-numberOfDaysFormLastMonth)
+    numberOfDaysFormLastMonth -= 1
+    if (numberOfDaysFormLastMonth === -1) {
+      return daysInLastMonth.slice(-6)
+    } else if(numberOfDaysFormLastMonth === 0) {
+      return []
+    } else { 
+      return daysInLastMonth.slice(-numberOfDaysFormLastMonth)
+    } 
   }
 
   const handleDayChange = (clickedDay) => {
@@ -73,7 +76,7 @@ const DatePicker = () => {
 
   return (
     <div className="date-picker">
-      <div>{String(selectedMonth)}</div>
+      <h2>{selectedMonth.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</h2>
       <div className="header">
         <Select
           defaultValue={getMonth(selectedMonth)}
@@ -106,7 +109,7 @@ const DatePicker = () => {
           </div>
         ))}
         {handleStartOfMonth(selectedMonth).map((day) => (
-          <div key={day} className= 'hide-day' >
+          <div key={day} className= 'hide day' >
             {format(day, 'd')}
           </div>
         ))}
