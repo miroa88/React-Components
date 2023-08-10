@@ -3,11 +3,11 @@ import { useState } from 'react';
 import PaginationComponent from './PaginationComponent';
 import './App.css';
 import CardSlider from './CardSlider';
-import Table from './Table';
+// import Table from './Table';
 import Layout from './Layout';
 import AutocompleteTextField from './AutocompleteTextField'; 
 import DatePicker from './DatePicker';
-
+import { Table } from 'antd';
 function App() {
   const initialInputValue = 'Initial Value';
   const inputValue = 'Current Value';
@@ -17,8 +17,123 @@ function App() {
 
   const [selectedValue, setSelectedValue] = useState('');
 
-  return (
 
+  const dataSource = [
+    {
+      key: '1',
+      name: 'John Doe',
+      age: 32,
+      address: '10 Downing Street'
+    },
+    {
+      key: '2',
+      name: 'John Doe',
+      age: 32,
+      address: '10 Downing Street'
+    },
+    {
+      key: '3',
+      name: 'John Doe',
+      age: 32,
+      address: '10 Downing Street'
+    },
+    {
+      key: '4',
+      name: 'John Doe',
+      age: 32,
+      address: '10 Downing Street'
+    },
+    {
+      key: '5',
+      name: 'John Doe',
+      age: 32,
+      address: '10 Downing Street'
+    },
+    {
+      key: '6',
+      name: 'John Doe',
+      age: 32,
+      address: '10 Downing Street'
+    },
+    {
+      key: '7',
+      name: 'John Doe',
+      age: 32,
+      address: '10 Downing Street'
+    },
+    {
+      key: '8',
+      name: 'John Doe',
+      age: 32,
+      address: '10 Downing Street'
+    },
+    {
+      key: '9',
+      name: 'John Doe',
+      age: 32,
+      address: '10 Downing Street'
+    },
+    {
+      key: '10',
+      name: 'John Doe',
+      age: 32,
+      address: '10 Downing Street'
+    },
+    {
+      key: '11',
+      name: 'John Doe',
+      age: 32,
+      address: '10 Downing Street'
+    },
+    {
+      key: '12',
+      name: 'John Doe',
+      age: 32,
+      address: '10 Downing Street'
+    },
+  ];
+  const columns = [
+    {
+      title: 'Name',
+      dataIndex: 'name',
+    },
+    {
+      title: 'Age',
+      dataIndex: 'age',
+    },
+    {
+      title: 'Address',
+      dataIndex: 'address',
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (text, record) => (
+        <span>
+          {/* Add a clickable element inside the cell */}
+          <a onClick={() => handleRowClick(record)}>Click Me</a>
+        </span>
+      ),
+      onRow: (record) => ({
+        onClick: () => handleRowClick(record), // Attach the onClick event handler
+      }),
+    },
+  ];
+
+  const handleRowClick = (record) => {
+    console.log('Clicked row:', record);
+    // Perform any action you want with the clicked row's data
+  };
+
+  return (
+    <Table
+    dataSource={dataSource}
+    columns={columns}
+    pagination={{
+      position: ['bottomCenter'],
+      className: 'custom-pagination', // Apply the custom class
+    }}
+  />
     // <Router>
     //   <Layout>
     //     <Routes>
@@ -51,9 +166,10 @@ function App() {
 //     style={{ width: 200 }}
 //   />
 // </div>
-<div>
-  <DatePicker />
-</div>
+//<div>
+//  <DatePicker />
+//</div> 
+
   );
 }
 

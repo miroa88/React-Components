@@ -45,3 +45,24 @@ img {
   width: 100%;
   height: auto;
 }
+
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px; /* Adjust as needed */
+}
+
+.ant-table-thead th {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Target the table rows */
+.ant-table-tbody tr {
+  background-color: #f9f9f9;
+}
+
+/* Target the pagination component */
+.ant-pagination {
+  margin: 20px 0;
+}
