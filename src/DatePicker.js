@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
-import { Select } from 'antd';
+import { Select, Button  } from 'antd';
+import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
+
 import {
   format,
   addMonths,
   subMonths,
+  subDays,
+  addDays,
+  addYears,
+  subYears,
   endOfMonth,
   startOfMonth,
   eachDayOfInterval,
   getYear,
   getMonth,
-  isSameDay 
+  isSameDay,
+  isSameYear 
 } from 'date-fns';
 
 import './DatePicker.css';
@@ -24,7 +31,7 @@ const DatePicker = () => {
   }));
 
   const years = Array.from({ length: 10 }, (_, yearIndex) => {
-    const year = getYear(selectedMonth) - 1 + yearIndex;
+    const year = getYear(new Date()) - 1 + yearIndex;
     return { value: year, label: year.toString() };
   });
 
@@ -50,6 +57,7 @@ const DatePicker = () => {
   const handleYearChange = (value) => {
     const newYear = parseInt(value);
     setSelectedMonth((prevMonth) => new Date(newYear, getMonth(prevMonth)));
+
   };
 
   const handleStartOfMonth = (selectedDate) => {
@@ -67,19 +75,36 @@ const DatePicker = () => {
   }
 
   const handleDayChange = (clickedDay) => {
-    
     const daysToAdd = clickedDay.target.textContent - selectedMonth.getDate();
     let newDate = new Date(selectedMonth);
     newDate.setDate(selectedMonth.getDate() + daysToAdd);
     setSelectedMonth(newDate)
   }
 
+  const monthLeftClickHandler = () => {
+    const previousDate = new Date(selectedMonth)
+    handleMonthChange(selectedMonth.getMonth() - 1);
+  }
+
+  const monthRightClickHandler = () => {
+    handleMonthChange(selectedMonth.getMonth() + 1);
+  }
+
+  const yearLeftClickHandler = () => {
+    handleYearChange(selectedMonth.getFullYear() - 1);
+  }
+
+  const yearRightClickHandler = () => {
+    handleYearChange(selectedMonth.getFullYear() + 1);
+  }
+
   return (
     <div className="date-picker">
       <h2>{selectedMonth.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</h2>
       <div className="header">
+        <Button onClick={monthLeftClickHandler} size="small" shape="circle" icon={<ArrowLeftOutlined />} />
         <Select
-          defaultValue={getMonth(selectedMonth)}
+          value={getMonth(selectedMonth)}
           onChange={handleMonthChange}
           className="month-dropdown"
         >
@@ -87,10 +112,12 @@ const DatePicker = () => {
             <Option key={month.value} value={month.value}>
               {month.label}
             </Option>
-          ))}
+          ))}         
         </Select>
+        <Button onClick={monthRightClickHandler}  size="small" shape="circle" icon={<ArrowRightOutlined />} />
+        <Button onClick={yearLeftClickHandler} size="small" shape="circle" icon={<ArrowLeftOutlined />} />
         <Select
-          defaultValue={getYear(selectedMonth)}
+          value={getYear(selectedMonth)}
           onChange={handleYearChange}
           className="year-dropdown"
         >
@@ -100,7 +127,7 @@ const DatePicker = () => {
             </Option>
           ))}
         </Select>
-      
+        <Button onClick={yearRightClickHandler} size="small" shape="circle" icon={<ArrowRightOutlined />} />
       </div>
       <div className="days">
         {daysOfWeek.map((day) => (

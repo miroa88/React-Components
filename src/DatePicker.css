@@ -2,57 +2,51 @@
     width: 310px;
     margin: auto;
     text-align: center;
-  }
+}
   
-  .header {
+.header {
     display: flex;
     justify-content:space-between;
     align-items: center;
     margin-bottom: 5px;
-    background-color: rgb(53, 113, 252); /* Change the background color to blue */
+    background-color: rgb(56, 190, 252); /* Change the background color to blue */
     color: white; /* Change the text color to white */
     padding: 10px; /* Add padding for better appearance */
     border-radius: 6px;
-  }
-  
-  .days {
+}
+
+.days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
-  }
-  
-  .day-label {
+}
+
+.day-label {
     text-align: center;
     font-weight: bold;
     padding: 5px;
     border: 1px solid transparent; /* Add a border if needed */
-  }
-  
-  .day {
+}
+
+.day {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 26px; /* Set the width to your desired value */
     height: 17px; /* Set the height to your desired value */
-  }
-  .hide {
+}
+.hide {
     background-color: #f0f0f0; /* Gray background for disabled days */
     color: #999; /* Gray text color for disabled days */
     pointer-events:none
-  }
+}
 
-  .day:hover {
+.day:hover {
     background-color: lightgray; /* or any other color you prefer */
     cursor: pointer;
-  }
+}
 
-  .selected {
+.selected {
     background-color: rgb(56, 190, 252);
-  }
-  
-  button {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
+}
   
