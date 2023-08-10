@@ -27,7 +27,7 @@ const DatePicker = () => {
 
   const months = Array.from({ length: 12 }, (_, monthIndex) => ({
     value: monthIndex,
-    label: format(new Date(0, monthIndex), 'MMMM'),
+    label: format(new Date(0, monthIndex), 'MMMM').slice(0, 3).toUpperCase(),
   }));
 
   const years = Array.from({ length: 10 }, (_, yearIndex) => {
@@ -84,6 +84,7 @@ const DatePicker = () => {
   const monthLeftClickHandler = () => {
     const previousDate = new Date(selectedMonth)
     handleMonthChange(selectedMonth.getMonth() - 1);
+
   }
 
   const monthRightClickHandler = () => {
