@@ -21,9 +21,33 @@ import {
 
 import './DatePicker.css';
 
+import { useDispatch } from 'react-redux';
+import { setAppointment } from './actions/appointment/AppointmentActions';
+
+import { useSelector } from 'react-redux';
+
 const DatePicker = () => {
+  const appointments = useSelector(state => state);
+  console.log(new Date(appointments.appointment.date))
   const { Option } = Select;
   const [selectedMonth, setSelectedMonth] = useState(new Date()); 
+
+  const dispatch = useDispatch();
+
+  const handleAppSubmit = () => {
+    
+    const appointment = {
+      date: selectedMonth.getTime(),
+      startTime: '10:00',
+      duration: '2',
+      customerName: 'John Doe',
+      customerPhone: '1234567890',
+      customerEmail: 'john.doe@example.com',
+      description: 'Appointment description'
+    };
+
+    dispatch(setAppointment(appointment));
+  };
 
   const months = Array.from({ length: 12 }, (_, monthIndex) => ({
     value: monthIndex,
@@ -57,6 +81,7 @@ const DatePicker = () => {
   const handleYearChange = (value) => {
     const newYear = parseInt(value);
     setSelectedMonth((prevMonth) => new Date(newYear, getMonth(prevMonth)));
+
 
   };
 
@@ -147,6 +172,7 @@ const DatePicker = () => {
           </div>
         ))}
       </div>
+      <Button onClick={handleAppSubmit}>SUBMIT</Button>
     </div>
   );
 };
