@@ -1,17 +1,19 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { useState } from 'react';
-import PaginationComponent from './PaginationComponent';
-import './App.css';
-import CardSlider from './CardSlider';
-// import Table from './Table';
-import Layout from './Layout';
-import AutocompleteTextField from './AutocompleteTextField'; 
-import DatePicker from './DatePicker';
-import { Table } from 'antd';
-import LoginForm from './LoginForm';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+// import { useState } from 'react';
+// import PaginationComponent from './PaginationComponent';
+// import './App.css';
+// import CardSlider from './CardSlider';
+// // import Table from './Table';
+// import Layout from './Layout';
+// import AutocompleteTextField from './AutocompleteTextField'; 
+// import DatePicker from './DatePicker';
+// import { Table } from 'antd';
+// import LoginForm from './LoginForm';
 
+import React from 'react';
 import { Provider } from 'react-redux';
-import store from './store/Store'; // Import your Redux store
+import store from './store';
+import PokemonAbilities from './PokemonAbilities';
 
 
 function App() {
@@ -189,7 +191,8 @@ function App() {
 //   />
 // </div>
   <Provider store={store}>
-    <DatePicker />
+    {/* <DatePicker /> */}
+    <PokemonAbilities pokemonId={1} />
   </Provider>
 
 
