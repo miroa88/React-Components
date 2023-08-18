@@ -1,6 +1,7 @@
 export const FETCH_ABILITIES = 'FETCH_ABILITIES';
 export const FETCH_ABILITIES_SUCCESS = 'FETCH_ABILITIES_SUCCESS';
 export const FETCH_ABILITIES_FAILURE = 'FETCH_ABILITIES_FAILURE';
+export const UPDATE_APPOINTMENT = 'UPDATE_APPOINTMENT';
 
 export const fetchAbilities = (pokemonId) => ({
   type: FETCH_ABILITIES,

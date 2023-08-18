@@ -1,3 +1,21 @@
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
+import PokemonAbilities from './PokemonAbilities';
+import DatePicker from './components/DatePicker'
+
+function App() {
+
+  return (
+    <Provider store={store}>
+    <DatePicker />
+    <PokemonAbilities pokemonId={5} />
+  </Provider>
+  );
+}
+
+export default App;
+
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 // import { useState } from 'react';
 // import PaginationComponent from './PaginationComponent';
@@ -9,199 +27,6 @@
 // import DatePicker from './DatePicker';
 // import { Table } from 'antd';
 // import LoginForm from './LoginForm';
-
-import React from 'react';
-import { Provider } from 'react-redux';
-import store from './store';
-import PokemonAbilities from './PokemonAbilities';
-
-
-function App() {
-
-  // const auth = firebase.auth();
-
-// function signIn(email, password) {
-//   auth.signInWithEmailAndPassword(email, password).catch((error) => {
-//     console.error("Error signing in", error);
-//   });
-// }
-// function signUp(email, password) {
-//   auth.createUserWithEmailAndPassword(email, password).catch((error) => {
-//     console.error("Error signing up", error);
-//   });
-// }
-  // const initialInputValue = 'Initial Value';
-  // const inputValue = 'Current Value';
-  // const suggestionArray = ['Apple', 'Ap1ple','App2le','Appl2e','Appl3e','App5le','Apple6','Apple7','Banana', 'Cherry', 'Grapes', 'Orange'];
-
-  // //setInputValueOnChange,
-
-  // const [selectedValue, setSelectedValue] = useState('');
-
-
-  // const dataSource = [
-  //   {
-  //     key: '1',
-  //     name: 'John Doe',
-  //     age: 32,
-  //     address: '10 Downing Street'
-  //   },
-  //   {
-  //     key: '2',
-  //     name: 'John Doe',
-  //     age: 32,
-  //     address: '10 Downing Street'
-  //   },
-  //   {
-  //     key: '3',
-  //     name: 'John Doe',
-  //     age: 32,
-  //     address: '10 Downing Street'
-  //   },
-  //   {
-  //     key: '4',
-  //     name: 'John Doe',
-  //     age: 32,
-  //     address: '10 Downing Street'
-  //   },
-  //   {
-  //     key: '5',
-  //     name: 'John Doe',
-  //     age: 32,
-  //     address: '10 Downing Street'
-  //   },
-  //   {
-  //     key: '6',
-  //     name: 'John Doe',
-  //     age: 32,
-  //     address: '10 Downing Street'
-  //   },
-  //   {
-  //     key: '7',
-  //     name: 'John Doe',
-  //     age: 32,
-  //     address: '10 Downing Street'
-  //   },
-  //   {
-  //     key: '8',
-  //     name: 'John Doe',
-  //     age: 32,
-  //     address: '10 Downing Street'
-  //   },
-  //   {
-  //     key: '9',
-  //     name: 'John Doe',
-  //     age: 32,
-  //     address: '10 Downing Street'
-  //   },
-  //   {
-  //     key: '10',
-  //     name: 'John Doe',
-  //     age: 32,
-  //     address: '10 Downing Street'
-  //   },
-  //   {
-  //     key: '11',
-  //     name: 'John Doe',
-  //     age: 32,
-  //     address: '10 Downing Street'
-  //   },
-  //   {
-  //     key: '12',
-  //     name: 'John Doe',
-  //     age: 32,
-  //     address: '10 Downing Street'
-  //   },
-  // ];
-  // const columns = [
-  //   {
-  //     title: 'Name',
-  //     dataIndex: 'name',
-  //   },
-  //   {
-  //     title: 'Age',
-  //     dataIndex: 'age',
-  //   },
-  //   {
-  //     title: 'Address',
-  //     dataIndex: 'address',
-  //   },
-  //   {
-  //     title: 'Action',
-  //     key: 'action',
-  //     render: (text, record) => (
-  //       <span>
-  //         {/* Add a clickable element inside the cell */}
-  //         <a onClick={() => handleRowClick(record)}>Click Me</a>
-  //       </span>
-  //     ),
-  //     onRow: (record) => ({
-  //       onClick: () => handleRowClick(record), // Attach the onClick event handler
-  //     }),
-  //   },
-  // ];
-
-  // const handleRowClick = (record) => {
-  //   console.log('Clicked row:', record);
-  //   // Perform any action you want with the clicked row's data
-  // };
-  
-
-  return (
-    // <LoginForm signIn={signIn}  signUp={signUp}/>
-
-//     <Table
-//     dataSource={dataSource}
-//     columns={columns}
-//     pagination={{
-//       position: ['bottomCenter'],
-//       className: "pagination-container"//'custom-pagination', // Apply the custom class
-//     }}
-//   />
-//     <Router>
-//       <Layout>
-//         <Routes>
-//           <Route path="/"  component={<Table />} />
-//           <Route path="/pagination" component={<PaginationComponent />} />
-//           <Route path="/cardSlider" component={<CardSlider />} />
-//         </Routes>
-//       </Layout>
-//     </Router>
-//     <Router>
-//     <Layout>
-//       <Routes>
-//         <Route exact path="/table" element={<Table/>}/>
-//         <Route exact path="/pagination" element={<PaginationComponent/>}/>
-//         <Route exact path="/cardSlider" element={<CardSlider/>}/>
-//         <Route exact path="/pieChart" element={<PieChart />}/>
-//         {/* <Route path="*" element={<NotFound/>}/> */}
-//       </Routes>
-//     </Layout>
-//   </Router>
-//   <div>
-//   <h1>Autocomplete Text Field {selectedValue}</h1>
-//   <AutocompleteTextField
-//     initialValue={initialInputValue}
-//     value={inputValue}
-//     options={suggestionArray}
-//     // setInputValueOnSelect={setSelectedValue}
-//     setInputValueOnChange={setSelectedValue}
-//     placeholder={"placeholder"}
-//     style={{ width: 200 }}
-//   />
-// </div>
-  <Provider store={store}>
-    {/* <DatePicker /> */}
-    <PokemonAbilities pokemonId={1} />
-  </Provider>
-
-
-  );
-}
-
-export default App;
-
-
 // import { PlusOutlined } from '@ant-design/icons';
 // import React, { useState } from 'react';
 // import {
@@ -323,3 +148,164 @@ export default App;
 // };
 
 // export default () => <FormDisabledDemo />;
+
+ // const initialInputValue = 'Initial Value';
+  // const inputValue = 'Current Value';
+  // const suggestionArray = ['Apple', 'Ap1ple','App2le','Appl2e','Appl3e','App5le','Apple6','Apple7','Banana', 'Cherry', 'Grapes', 'Orange'];
+
+  // //setInputValueOnChange,
+
+  // const [selectedValue, setSelectedValue] = useState('');
+
+
+  // const dataSource = [
+  //   {
+  //     key: '1',
+  //     name: 'John Doe',
+  //     age: 32,
+  //     address: '10 Downing Street'
+  //   },
+  //   {
+  //     key: '2',
+  //     name: 'John Doe',
+  //     age: 32,
+  //     address: '10 Downing Street'
+  //   },
+  //   {
+  //     key: '3',
+  //     name: 'John Doe',
+  //     age: 32,
+  //     address: '10 Downing Street'
+  //   },
+  //   {
+  //     key: '4',
+  //     name: 'John Doe',
+  //     age: 32,
+  //     address: '10 Downing Street'
+  //   },
+  //   {
+  //     key: '5',
+  //     name: 'John Doe',
+  //     age: 32,
+  //     address: '10 Downing Street'
+  //   },
+  //   {
+  //     key: '6',
+  //     name: 'John Doe',
+  //     age: 32,
+  //     address: '10 Downing Street'
+  //   },
+  //   {
+  //     key: '7',
+  //     name: 'John Doe',
+  //     age: 32,
+  //     address: '10 Downing Street'
+  //   },
+  //   {
+  //     key: '8',
+  //     name: 'John Doe',
+  //     age: 32,
+  //     address: '10 Downing Street'
+  //   },
+  //   {
+  //     key: '9',
+  //     name: 'John Doe',
+  //     age: 32,
+  //     address: '10 Downing Street'
+  //   },
+  //   {
+  //     key: '10',
+  //     name: 'John Doe',
+  //     age: 32,
+  //     address: '10 Downing Street'
+  //   },
+  //   {
+  //     key: '11',
+  //     name: 'John Doe',
+  //     age: 32,
+  //     address: '10 Downing Street'
+  //   },
+  //   {
+  //     key: '12',
+  //     name: 'John Doe',
+  //     age: 32,
+  //     address: '10 Downing Street'
+  //   },
+  // ];
+  // const columns = [
+  //   {
+  //     title: 'Name',
+  //     dataIndex: 'name',
+  //   },
+  //   {
+  //     title: 'Age',
+  //     dataIndex: 'age',
+  //   },
+  //   {
+  //     title: 'Address',
+  //     dataIndex: 'address',
+  //   },
+  //   {
+  //     title: 'Action',
+  //     key: 'action',
+  //     render: (text, record) => (
+  //       <span>
+  //         {/* Add a clickable element inside the cell */}
+  //         <a onClick={() => handleRowClick(record)}>Click Me</a>
+  //       </span>
+  //     ),
+  //     onRow: (record) => ({
+  //       onClick: () => handleRowClick(record), // Attach the onClick event handler
+  //     }),
+  //   },
+  // ];
+
+  // const handleRowClick = (record) => {
+  //   console.log('Clicked row:', record);
+  //   // Perform any action you want with the clicked row's data
+  // };
+  
+  //return stuff
+
+      // <LoginForm signIn={signIn}  signUp={signUp}/>
+
+//     <Table
+//     dataSource={dataSource}
+//     columns={columns}
+//     pagination={{
+//       position: ['bottomCenter'],
+//       className: "pagination-container"//'custom-pagination', // Apply the custom class
+//     }}
+//   />
+//     <Router>
+//       <Layout>
+//         <Routes>
+//           <Route path="/"  component={<Table />} />
+//           <Route path="/pagination" component={<PaginationComponent />} />
+//           <Route path="/cardSlider" component={<CardSlider />} />
+//         </Routes>
+//       </Layout>
+//     </Router>
+//     <Router>
+//     <Layout>
+//       <Routes>
+//         <Route exact path="/table" element={<Table/>}/>
+//         <Route exact path="/pagination" element={<PaginationComponent/>}/>
+//         <Route exact path="/cardSlider" element={<CardSlider/>}/>
+//         <Route exact path="/pieChart" element={<PieChart />}/>
+//         {/* <Route path="*" element={<NotFound/>}/> */}
+//       </Routes>
+//     </Layout>
+//   </Router>
+//   <div>
+//   <h1>Autocomplete Text Field {selectedValue}</h1>
+//   <AutocompleteTextField
+//     initialValue={initialInputValue}
+//     value={inputValue}
+//     options={suggestionArray}
+//     // setInputValueOnSelect={setSelectedValue}
+//     setInputValueOnChange={setSelectedValue}
+//     placeholder={"placeholder"}
+//     style={{ width: 200 }}
+//   />
+// </div>

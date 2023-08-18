@@ -5,6 +5,7 @@ const initialState = {
   error: null,
 };
 
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ABILITIES_SUCCESS:
@@ -15,5 +16,6 @@ const reducer = (state = initialState, action) => {
       return state;
   }
 };
+
 
 export default reducer;

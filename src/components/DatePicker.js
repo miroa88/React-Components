@@ -1,53 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Select, Button  } from 'antd';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
 
 import {
   format,
-  addMonths,
   subMonths,
-  subDays,
-  addDays,
-  addYears,
-  subYears,
   endOfMonth,
   startOfMonth,
   eachDayOfInterval,
   getYear,
   getMonth,
   isSameDay,
-  isSameYear 
 } from 'date-fns';
 
 import './DatePicker.css';
 
 import { useDispatch } from 'react-redux';
-import { setAppointment } from './actions/appointment/AppointmentActions';
+import { setAppointment } from '../actions/appointment/AppointmentActions';
 
 import { useSelector } from 'react-redux';
 
 const DatePicker = () => {
-  const appointments = useSelector(state => state);
-  console.log(new Date(appointments.appointment.date))
+  const appointments = useSelector(state => state.appointment);
   const { Option } = Select;
   const [selectedMonth, setSelectedMonth] = useState(new Date()); 
 
   const dispatch = useDispatch();
 
-  const handleAppSubmit = () => {
-    
-    const appointment = {
-      date: selectedMonth.getTime(),
-      startTime: '10:00',
-      duration: '2',
-      customerName: 'John Doe',
-      customerPhone: '1234567890',
-      customerEmail: 'john.doe@example.com',
-      description: 'Appointment description'
+  useEffect(() => {
+    const updateAppointment = () => {
+      const appointment = {
+        date: selectedMonth.getTime(),
+      };
+
+      dispatch(setAppointment(appointment));
     };
 
-    dispatch(setAppointment(appointment));
-  };
+    updateAppointment();
+  }, [selectedMonth]); 
+
 
   const months = Array.from({ length: 12 }, (_, monthIndex) => ({
     value: monthIndex,
@@ -57,11 +48,6 @@ const DatePicker = () => {
   const years = Array.from({ length: 10 }, (_, yearIndex) => {
     const year = getYear(new Date()) - 1 + yearIndex;
     return { value: year, label: year.toString() };
-  });
-
-  const daysInMonth = eachDayOfInterval({
-    start: startOfMonth(selectedMonth),
-    end: addMonths(selectedMonth, 1),
   });
 
   const getDaysInMonth = (selectedDate) => {
@@ -126,7 +112,7 @@ const DatePicker = () => {
 
   return (
     <div className="date-picker">
-      <h2>{selectedMonth.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</h2>
+      <h2>{(new Date(appointments.date)).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</h2>
       <div className="header">
         <Button onClick={monthLeftClickHandler} size="small" shape="circle" icon={<ArrowLeftOutlined />} />
         <Select
@@ -172,7 +158,6 @@ const DatePicker = () => {
           </div>
         ))}
       </div>
-      <Button onClick={handleAppSubmit}>SUBMIT</Button>
     </div>
   );
 };
