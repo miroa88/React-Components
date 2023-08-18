@@ -3,6 +3,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import PokemonAbilities from './PokemonAbilities';
 import DatePicker from './components/DatePicker'
+import ImageSelector from './components/ImageSelector';
+import ImageDropzone from './components/ImageDropzone';
 
 function App() {
 
@@ -10,6 +12,7 @@ function App() {
     <Provider store={store}>
     <DatePicker />
     <PokemonAbilities pokemonId={5} />
+    <ImageDropzone />
   </Provider>
   );
 }
